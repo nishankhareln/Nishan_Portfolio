@@ -51,7 +51,7 @@ const contactForm = document.getElementById('contact-form'),
 
  contactForm.addEventListener('submit',sendEmail)
 
- //scroll up
+ //scroll up 3
  const scrollUp = () => {
     const scrollUp = document.getElementById('scroll-up');
     if (scrollUp) {

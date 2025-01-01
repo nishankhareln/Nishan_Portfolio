@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
 }
+/* * selector applies box-sizing, padding, and margin reset to all elements. */
 html{
     scroll-behavior: smooth;
 }
