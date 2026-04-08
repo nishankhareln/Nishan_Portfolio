@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://www.google.com http://localhost:8000 http://127.0.0.1:8000; frame-src https://www.google.com; base-uri 'self'; form-action 'self';">
+
+    <title>Nishan Kharel — AI Engineer & Data Scientist</title>
+    <meta name="description" content="Portfolio of Nishan Kharel — AI Engineer and Data Scientist based in Kathmandu, Nepal. Specializing in LLMs, RAG, computer vision, and end-to-end ML pipelines.">
+    <meta name="author" content="Nishan Kharel">
+    <meta name="keywords" content="Nishan Kharel, AI Engineer, Data Scientist, Machine Learning, NLP, Computer Vision, RAG, LLM, FastAPI, Nepal">
+
+    <meta property="og:title" content="Nishan Kharel — AI Engineer & Data Scientist">
+    <meta property="og:description" content="Portfolio of Nishan Kharel — AI Engineer building LLM, RAG, and computer vision systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nishankharel.com.np">
+    <meta property="og:image" content="./portfolio/my-mage1.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" href="./portfolio/my-mage1.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <link rel="stylesheet" href="./portfolio/style.css">
+</head>
+<body>
+
+    <!-- =============== HEADER / NAV =============== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo">
+                <span class="nav__logo-mark">NK</span>
+                <span class="nav__logo-text">Nishan Kharel</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li><a href="#work" class="nav__link">Work</a></li>
+                    <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="#experience" class="nav__link">Experience</a></li>
+                    <li><a href="#skills" class="nav__link">Skills</a></li>
+                    <li><a href="#services" class="nav__link">Services</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+
+                <div class="nav__close" id="nav-close" aria-label="Close menu">
+                    <i class="ri-close-large-line"></i>
+                </div>
+            </div>
+
+            <div class="nav__actions">
+                <a href="#contact" class="nav__cta">Let's Talk <i class="ri-arrow-right-up-line"></i></a>
+                <div class="nav__toggle" id="nav-toggle" aria-label="Open menu">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <!-- =============== HOME =============== -->
+        <section class="home section" id="home">
+            <div class="home__container container">
+                <div class="home__content">
+                    <div class="home__badge" data-aos="fade-up">
+                        <span class="home__badge-dot"></span>
+                        <span>Available for hire · Kathmandu, Nepal</span>
+                    </div>
+
+                    <h1 class="home__title" data-aos="fade-up" data-aos-delay="100">
+                        <span class="home__title-line">NISHAN</span>
+                        <span class="home__title-line home__title-line--outline">KHAREL<span class="home__title-dot">.</span></span>
+                    </h1>
+
+                    <p class="home__role" data-aos="fade-up" data-aos-delay="200">
+                        I build <span id="typed-role" class="home__role-typed"></span>
+                    </p>
+
+                    <p class="home__description" data-aos="fade-up" data-aos-delay="300">
+                        Data Scientist and AI Engineer with 1+ year of hands-on experience building
+                        machine learning, NLP, and computer vision systems. I turn complex data problems
+                        into measurable business outcomes.
+                    </p>
+
+                    <div class="home__cta" data-aos="fade-up" data-aos-delay="400">
+                        <a href="#work" class="button button--primary">
+                            View Selected Work
+                            <i class="ri-arrow-right-up-line"></i>
+                        </a>
+                        <a href="./portfolio/Nishan_Kharel_Resume.pdf" download class="button button--ghost">
+                            Download CV
+                            <i class="ri-download-line"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__socials" data-aos="fade-up" data-aos-delay="500">
+                        <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="home__social-link" aria-label="GitHub">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/nkharel" target="_blank" rel="noopener noreferrer" class="home__social-link" aria-label="LinkedIn">
+                            <i class="ri-linkedin-box-fill"></i>
+                        </a>
+                        <a href="mailto:nkharel57@gmail.com" class="home__social-link" aria-label="Email">
+                            <i class="ri-mail-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home__visual" data-aos="fade-left" data-aos-delay="200">
+                    <div class="home__image-wrap">
+                        <div class="home__image-frame"></div>
+                        <img src="./portfolio/my-mage1.png" alt="Portrait of Nishan Kharel" class="home__image">
+                        <div class="home__image-tag home__image-tag--top">
+                            <i class="ri-code-box-line"></i>
+                            <span>AI Engineer</span>
+                        </div>
+                        <div class="home__image-tag home__image-tag--bottom">
+                            <i class="ri-database-2-line"></i>
+                            <span>Data Scientist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home__stats container" data-aos="fade-up" data-aos-delay="600">
+                <div class="home__stat">
+                    <span class="home__stat-number" data-target="1">0</span><span class="home__stat-plus">+</span>
+                    <span class="home__stat-label">Year Experience</span>
+                </div>
+                <div class="home__stat">
+                    <span class="home__stat-number" data-target="6">0</span><span class="home__stat-plus">+</span>
+                    <span class="home__stat-label">AI Projects Shipped</span>
+                </div>
+                <div class="home__stat">
+                    <span class="home__stat-number" data-target="20">0</span><span class="home__stat-plus">+</span>
+                    <span class="home__stat-label">Lectures Delivered</span>
+                </div>
+                <div class="home__stat">
+                    <span class="home__stat-number" data-target="90">0</span><span class="home__stat-plus">%</span>
+                    <span class="home__stat-label">Student Pass Rate</span>
+                </div>
+            </div>
+
+            <a href="#work" class="home__scroll">
+                <div class="home__scroll-box">
+                    <i class="ri-arrow-down-line"></i>
+                </div>
+                <span class="home__scroll-text">Scroll</span>
+            </a>
+        </section>
+
+        <!-- =============== WORK / PROJECTS =============== -->
+        <section class="work section" id="work">
+            <div class="container">
+                <div class="section__head" data-aos="fade-up">
+                    <span class="section__eyebrow">01 — Selected Work</span>
+                    <h2 class="section__title-xl">RECENT<br>PROJECTS.</h2>
+                    <p class="section__intro">
+                        Production-grade AI systems I've built — from computer vision pipelines to RAG
+                        chatbots and end-to-end ATS platforms.
+                    </p>
+                </div>
+
+                <div class="work__filters" data-aos="fade-up">
+                    <button class="work__filter is-active" data-filter="all">All Projects</button>
+                    <button class="work__filter" data-filter="cv">Computer Vision</button>
+                    <button class="work__filter" data-filter="nlp">NLP</button>
+                    <button class="work__filter" data-filter="rag">RAG &amp; LLM</button>
+                    <button class="work__filter" data-filter="dl">Deep Learning</button>
+                </div>
+
+                <div class="work__grid" id="work-grid">
+
+                    <article class="work__card work__card--large" data-category="cv dl" data-aos="fade-up">
+                        <div class="work__card-image">
+                            <img src="./portfolio/work1.png" alt="Bank Note OCR" loading="lazy">
+                            <div class="work__card-overlay">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </div>
+                        </div>
+                        <div class="work__card-body">
+                            <div class="work__card-meta">
+                                <span class="work__card-tag">Computer Vision</span>
+                                <span class="work__card-tag">Deep Learning</span>
+                                <span class="work__card-tag">OpenCV</span>
+                            </div>
+                            <h3 class="work__card-title">Bank Note OCR — Nepali Currency Detection</h3>
+                            <p class="work__card-desc">
+                                Real-time Nepali banknote denomination classifier using computer vision and
+                                vector similarity techniques, robust under varied lighting and image quality.
+                            </p>
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="work__card-link">
+                                View on GitHub <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work__card" data-category="nlp" data-aos="fade-up" data-aos-delay="100">
+                        <div class="work__card-image">
+                            <img src="./portfolio/work2.png" alt="Recruit Nepal ATS" loading="lazy">
+                            <div class="work__card-overlay">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </div>
+                        </div>
+                        <div class="work__card-body">
+                            <div class="work__card-meta">
+                                <span class="work__card-tag">NLP</span>
+                                <span class="work__card-tag">spaCy NER</span>
+                                <span class="work__card-tag">LLM</span>
+                            </div>
+                            <h3 class="work__card-title">Recruit Nepal — AI-Powered ATS</h3>
+                            <p class="work__card-desc">
+                                End-to-end ATS pipeline with Tesseract OCR, spaCy NER, and Sentence Transformer
+                                embeddings. LLM-based contextual scoring for automated candidate ranking.
+                            </p>
+                            <a href="https://jobdes.streamlit.app/" target="_blank" rel="noopener noreferrer" class="work__card-link">
+                                Live Demo <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work__card" data-category="dl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="work__card-image">
+                            <img src="./portfolio/work3.png" alt="Shishu Care Infant Cry Classifier" loading="lazy">
+                            <div class="work__card-overlay">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </div>
+                        </div>
+                        <div class="work__card-body">
+                            <div class="work__card-meta">
+                                <span class="work__card-tag">CNN-BiLSTM</span>
+                                <span class="work__card-tag">Audio ML</span>
+                            </div>
+                            <h3 class="work__card-title">Shishu Care — Infant Cry Classifier</h3>
+                            <p class="work__card-desc">
+                                CNN-BiLSTM with attention to classify infant cries (hunger, pain, burping, sleep)
+                                from mel spectrograms with near real-time inference.
+                            </p>
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="work__card-link">
+                                View on GitHub <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work__card work__card--large" data-category="rag nlp" data-aos="fade-up">
+                        <div class="work__card-image">
+                            <img src="./portfolio/work6.png" alt="RAG Chatbot with pgvector" loading="lazy">
+                            <div class="work__card-overlay">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </div>
+                        </div>
+                        <div class="work__card-body">
+                            <div class="work__card-meta">
+                                <span class="work__card-tag">RAG</span>
+                                <span class="work__card-tag">FastAPI</span>
+                                <span class="work__card-tag">pgvector</span>
+                                <span class="work__card-tag">Gemini</span>
+                            </div>
+                            <h3 class="work__card-title">RAG Chatbot with pgvector + Gemini</h3>
+                            <p class="work__card-desc">
+                                Production-ready RAG chatbot using FastAPI + PostgreSQL (pgvector) + Gemini LLM API
+                                with Sentence Transformer embeddings for cosine-similarity retrieval. Containerised
+                                with Docker-Compose; Streamlit frontend.
+                            </p>
+                            <a href="https://github.com/nishankhareln/Chatbot-with-PGvector" target="_blank" rel="noopener noreferrer" class="work__card-link">
+                                View on GitHub <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work__card" data-category="rag nlp" data-aos="fade-up" data-aos-delay="100">
+                        <div class="work__card-image">
+                            <img src="./portfolio/work4.png" alt="PopUp Vendor Chatbot" loading="lazy">
+                            <div class="work__card-overlay">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </div>
+                        </div>
+                        <div class="work__card-body">
+                            <div class="work__card-meta">
+                                <span class="work__card-tag">LangChain</span>
+                                <span class="work__card-tag">OpenAI</span>
+                            </div>
+                            <h3 class="work__card-title">PopUp — Vendor Conversational Chatbot</h3>
+                            <p class="work__card-desc">
+                                Multi-document chatbot with LangChain + OpenAI API, dynamic conversational forms,
+                                and session state management for accurate multi-turn vendor workflows.
+                            </p>
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="work__card-link">
+                                View Details <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work__card" data-category="dl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="work__card-image">
+                            <img src="./portfolio/work5.png" alt="Protein Function Prediction" loading="lazy">
+                            <div class="work__card-overlay">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </div>
+                        </div>
+                        <div class="work__card-body">
+                            <div class="work__card-meta">
+                                <span class="work__card-tag">Deep Learning</span>
+                                <span class="work__card-tag">Bioinformatics</span>
+                            </div>
+                            <h3 class="work__card-title">Protein Function Prediction (CAFA-6)</h3>
+                            <p class="work__card-desc">
+                                Predicted Gene Ontology labels from amino acid sequences using deep learning,
+                                with bioinformatics preprocessing, custom encoding, and class-weighted training.
+                            </p>
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="work__card-link">
+                                View on GitHub <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =============== ABOUT =============== -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="about__container">
+                    <div class="about__media" data-aos="fade-right">
+                        <div class="about__image-wrap">
+                            <img src="./portfolio/my-mage1.png" alt="Nishan Kharel" class="about__image">
+                        </div>
+                        <div class="about__badge">
+                            <i class="ri-award-fill"></i>
+                            <div>
+                                <strong>2nd Place</strong>
+                                <small>Code for Change Hackathon</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about__content" data-aos="fade-left">
+                        <span class="section__eyebrow">02 — About Me</span>
+                        <h2 class="section__title-xl">BUILDING<br>INTELLIGENT<br>SYSTEMS.</h2>
+
+                        <p class="about__description">
+                            I'm a results-driven <strong>AI Engineer and Data Scientist</strong> with over a year
+                            of hands-on experience deploying intelligent solutions and managing end-to-end AI pipelines.
+                        </p>
+                        <p class="about__description">
+                            My expertise spans <strong>Large Language Models, Retrieval-Augmented Generation,
+                            and data engineering</strong> with Docker and modern deep learning frameworks. I build
+                            chatbots, implement efficient ETL processes, and deliver data-driven insights that enhance
+                            business performance.
+                        </p>
+
+                        <div class="about__facts">
+                            <div class="about__fact">
+                                <i class="ri-graduation-cap-line"></i>
+                                <div>
+                                    <span class="about__fact-label">Education</span>
+                                    <strong>BSc CSIT · Tribhuvan University</strong>
+                                </div>
+                            </div>
+                            <div class="about__fact">
+                                <i class="ri-map-pin-line"></i>
+                                <div>
+                                    <span class="about__fact-label">Location</span>
+                                    <strong>Kathmandu, Nepal</strong>
+                                </div>
+                            </div>
+                            <div class="about__fact">
+                                <i class="ri-focus-3-line"></i>
+                                <div>
+                                    <span class="about__fact-label">Focus Areas</span>
+                                    <strong>LLM · RAG · Computer Vision</strong>
+                                </div>
+                            </div>
+                            <div class="about__fact">
+                                <i class="ri-mail-line"></i>
+                                <div>
+                                    <span class="about__fact-label">Email</span>
+                                    <strong>nkharel57@gmail.com</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="./portfolio/Nishan_Kharel_Resume.pdf" download class="button button--primary">
+                            Download Full CV <i class="ri-download-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============== EXPERIENCE =============== -->
+        <section class="experience section" id="experience">
+            <div class="container">
+                <div class="section__head" data-aos="fade-up">
+                    <span class="section__eyebrow">03 — Professional Journey</span>
+                    <h2 class="section__title-xl">EXPERIENCE.</h2>
+                    <p class="section__intro">
+                        A track record of shipping AI systems across recruitment, document intelligence,
+                        and education.
+                    </p>
+                </div>
+
+                <ol class="timeline">
+                    <li class="timeline__item" data-aos="fade-up">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__content">
+                            <div class="timeline__head">
+                                <span class="timeline__date">Oct 2025 — Feb 2026</span>
+                                <h3 class="timeline__role">AI Engineer <span class="timeline__type">Part Time</span></h3>
+                                <span class="timeline__company">Mantra Ideas Tech · Kathmandu, Nepal</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Engineered an AI-based <strong>Bank Note OCR System</strong> using computer vision and deep learning to detect and classify currency denominations.</li>
+                                <li>Fine-tuned <strong>Text-to-Speech models</strong> for Nepali voice synthesis with VibeVoice and Voice Cloning for real-time speech generation.</li>
+                                <li>Built NLP automation tools including intelligent document parsing and information extraction pipelines.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="timeline__item" data-aos="fade-up">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__content">
+                            <div class="timeline__head">
+                                <span class="timeline__date">Mar 2025 — Aug 2025</span>
+                                <h3 class="timeline__role">Data Scientist</h3>
+                                <span class="timeline__company">Mind Risers Technology · Kathmandu, Nepal</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Developed an <strong>AI-powered ATS system</strong> for Recruit Nepal using Tesseract OCR, spaCy NER, and semantic search to match candidate profiles with job descriptions.</li>
+                                <li>Built a <strong>Nepali fake news classifier</strong> for the Pop-Up app using BERT-based Transformer models, enabling real-time content verification.</li>
+                                <li>Created an automated <strong>Job Description Generator</strong> with secure API integration for dynamic job-posting creation.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="timeline__item" data-aos="fade-up">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__content">
+                            <div class="timeline__head">
+                                <span class="timeline__date">Feb 2025 — Feb 2026</span>
+                                <h3 class="timeline__role">Data Science Consultant <span class="timeline__type">Part-Time</span></h3>
+                                <span class="timeline__company">Namaste Network · Chabahil, Kathmandu</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Designed and deployed end-to-end data science solutions covering predictive modelling, NLP pipelines, and automated analytics.</li>
+                                <li>Delivered training on <strong>Neural Networks and Transformer architectures</strong>, covering backpropagation and attention mechanisms.</li>
+                                <li>Designed data science bootcamp curriculum and materials, improving student satisfaction by <strong>25%</strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="timeline__item" data-aos="fade-up">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__content">
+                            <div class="timeline__head">
+                                <span class="timeline__date">2024</span>
+                                <h3 class="timeline__role">Machine Learning Tutor</h3>
+                                <span class="timeline__company">Texas International College · Kathmandu, Nepal</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Conducted <strong>20+ lectures</strong> and mentoring sessions on AI and Machine Learning for undergraduate students.</li>
+                                <li>Facilitated hands-on ML workshops, achieving a <strong>90% student pass rate</strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- =============== SKILLS =============== -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <div class="section__head" data-aos="fade-up">
+                    <span class="section__eyebrow">04 — Technical Stack</span>
+                    <h2 class="section__title-xl">SKILLS &amp;<br>TOOLSET.</h2>
+                </div>
+
+                <div class="skills__grid">
+                    <div class="skills__group" data-aos="fade-up">
+                        <div class="skills__group-head">
+                            <i class="ri-code-s-slash-line"></i>
+                            <h3>Languages</h3>
+                        </div>
+                        <div class="skills__tags">
+                            <span class="skills__tag">Python</span>
+                            <span class="skills__tag">SQL</span>
+                            <span class="skills__tag">C</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="skills__group-head">
+                            <i class="ri-brain-line"></i>
+                            <h3>ML &amp; AI</h3>
+                        </div>
+                        <div class="skills__tags">
+                            <span class="skills__tag">Machine Learning</span>
+                            <span class="skills__tag">Deep Learning</span>
+                            <span class="skills__tag">NLP</span>
+                            <span class="skills__tag">Computer Vision</span>
+                            <span class="skills__tag">Fine-tuning</span>
+                            <span class="skills__tag">TensorFlow</span>
+                            <span class="skills__tag">OpenCV</span>
+                            <span class="skills__tag">Scikit-learn</span>
+                            <span class="skills__tag">Pandas</span>
+                            <span class="skills__tag">Jupyter</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="skills__group-head">
+                            <i class="ri-chat-smile-2-line"></i>
+                            <h3>LLM / RAG / Vector</h3>
+                        </div>
+                        <div class="skills__tags">
+                            <span class="skills__tag">LLMs</span>
+                            <span class="skills__tag">RAG</span>
+                            <span class="skills__tag">pgvector</span>
+                            <span class="skills__tag">Sentence Transformers</span>
+                            <span class="skills__tag">OpenAI API</span>
+                            <span class="skills__tag">Gemini API</span>
+                            <span class="skills__tag">Prompt Engineering</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up">
+                        <div class="skills__group-head">
+                            <i class="ri-server-line"></i>
+                            <h3>Backend</h3>
+                        </div>
+                        <div class="skills__tags">
+                            <span class="skills__tag">FastAPI</span>
+                            <span class="skills__tag">Flask</span>
+                            <span class="skills__tag">SQLAlchemy ORM</span>
+                            <span class="skills__tag">Alembic</span>
+                            <span class="skills__tag">SSL Configuration</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="skills__group-head">
+                            <i class="ri-database-2-line"></i>
+                            <h3>Database</h3>
+                        </div>
+                        <div class="skills__tags">
+                            <span class="skills__tag">PostgreSQL</span>
+                            <span class="skills__tag">Vector Database</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="skills__group-head">
+                            <i class="ri-cloud-line"></i>
+                            <h3>DevOps &amp; Tools</h3>
+                        </div>
+                        <div class="skills__tags">
+                            <span class="skills__tag">Docker</span>
+                            <span class="skills__tag">Docker Hub</span>
+                            <span class="skills__tag">Git</span>
+                            <span class="skills__tag">Postman</span>
+                            <span class="skills__tag">Swagger</span>
+                            <span class="skills__tag">TablePlus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills__certs" data-aos="fade-up">
+                    <h3 class="skills__certs-title">Certifications</h3>
+                    <ul class="skills__certs-list">
+                        <li><i class="ri-verified-badge-line"></i> Python Programming — Programiz Pro, 2024</li>
+                        <li><i class="ri-verified-badge-line"></i> NumPy for Data Science — Programiz Pro, 2024</li>
+                        <li><i class="ri-verified-badge-line"></i> Structured Query Language (SQL) — Programiz Pro, 2023</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============== SERVICES =============== -->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section__head" data-aos="fade-up">
+                    <span class="section__eyebrow">05 — What I Offer</span>
+                    <h2 class="section__title-xl">SERVICES.</h2>
+                </div>
+
+                <div class="services__grid">
+                    <article class="service-card" data-aos="fade-up">
+                        <span class="service-card__number">01</span>
+                        <div class="service-card__icon"><i class="ri-brain-line"></i></div>
+                        <h3 class="service-card__title">AI / ML Engineering</h3>
+                        <p class="service-card__desc">
+                            End-to-end machine learning pipelines — data ingestion, model training, fine-tuning,
+                            evaluation, and deployment to production APIs.
+                        </p>
+                    </article>
+
+                    <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <span class="service-card__number">02</span>
+                        <div class="service-card__icon"><i class="ri-chat-smile-2-line"></i></div>
+                        <h3 class="service-card__title">LLM &amp; RAG Applications</h3>
+                        <p class="service-card__desc">
+                            Production RAG systems with pgvector, Sentence Transformers, and modern LLM APIs.
+                            Chatbots, semantic search, and document intelligence.
+                        </p>
+                    </article>
+
+                    <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <span class="service-card__number">03</span>
+                        <div class="service-card__icon"><i class="ri-line-chart-line"></i></div>
+                        <h3 class="service-card__title">Data Science &amp; Analytics</h3>
+                        <p class="service-card__desc">
+                            Predictive modelling, NLP pipelines, and automated analytics using Python and SQL.
+                            Turning raw data into actionable business insights.
+                        </p>
+                    </article>
+
+                    <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <span class="service-card__number">04</span>
+                        <div class="service-card__icon"><i class="ri-server-line"></i></div>
+                        <h3 class="service-card__title">Backend API Development</h3>
+                        <p class="service-card__desc">
+                            Secure, scalable APIs with FastAPI, PostgreSQL, SQLAlchemy, and Docker.
+                            Production-grade with proper validation and rate limiting.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============== CONTACT =============== -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section__head" data-aos="fade-up">
+                    <span class="section__eyebrow">06 — Let's Connect</span>
+                    <h2 class="section__title-xl">GET IN<br>TOUCH.</h2>
+                    <p class="section__intro">
+                        Have a project in mind or want to collaborate? Drop a message — I read every one.
+                    </p>
+                </div>
+
+                <div class="contact__container">
+                    <div class="contact__info" data-aos="fade-right">
+                        <div class="contact__info-card">
+                            <i class="ri-mail-line"></i>
+                            <div>
+                                <span>Email</span>
+                                <strong>nkharel57@gmail.com</strong>
+                            </div>
+                        </div>
+                        <div class="contact__info-card">
+                            <i class="ri-phone-line"></i>
+                            <div>
+                                <span>Phone</span>
+                                <strong>+977 986 299 3796</strong>
+                            </div>
+                        </div>
+                        <div class="contact__info-card">
+                            <i class="ri-map-pin-line"></i>
+                            <div>
+                                <span>Location</span>
+                                <strong>Kathmandu, Nepal</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact__socials">
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <i class="ri-github-fill"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/nkharel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="ri-linkedin-box-fill"></i>
+                            </a>
+                            <a href="mailto:nkharel57@gmail.com" aria-label="Email">
+                                <i class="ri-mail-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="contact__form" id="contact-form" novalidate data-aos="fade-left">
+                        <div class="form__group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" name="user_name" required
+                                   minlength="2" maxlength="80" autocomplete="name"
+                                   class="form__input" placeholder="John Doe">
+                            <span class="form__error" data-for="contact-name"></span>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-email">Your Email</label>
+                            <input type="email" id="contact-email" name="user_email" required
+                                   maxlength="120" autocomplete="email"
+                                   class="form__input" placeholder="you@example.com">
+                            <span class="form__error" data-for="contact-email"></span>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-subject">Subject</label>
+                            <input type="text" id="contact-subject" name="user_subject"
+                                   maxlength="120" class="form__input" placeholder="Project inquiry">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="user_message" required
+                                      minlength="10" maxlength="2000" rows="6"
+                                      class="form__input form__area"
+                                      placeholder="Tell me about your project..."></textarea>
+                            <span class="form__error" data-for="contact-message"></span>
+                        </div>
+
+                        <!-- Honeypot field: hidden from humans, bots will fill it -->
+                        <div class="form__honeypot" aria-hidden="true">
+                            <label for="website">Leave this field blank</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <!-- reCAPTCHA v3 token placeholder (populated by main.js when key is set) -->
+                        <input type="hidden" name="recaptcha_token" id="recaptcha-token">
+
+                        <button type="submit" class="button button--primary contact__submit">
+                            <span class="contact__submit-label">Send Message</span>
+                            <i class="ri-send-plane-fill"></i>
+                        </button>
+
+                        <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =============== FOOTER =============== -->
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__brand">
+                <span class="footer__logo">NK.</span>
+                <p class="footer__tagline">
+                    Building intelligent systems that solve real-world problems.
+                </p>
+            </div>
+
+            <div class="footer__col">
+                <h4>Navigate</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4>Elsewhere</h4>
+                <ul>
+                    <li><a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/nkharel" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="mailto:nkharel57@gmail.com">Email</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__copy">
+                <span>&copy; <span id="footer-year"></span> Nishan Kharel. All rights reserved.</span>
+                <span>Crafted with precision.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll up -->
+    <a href="#home" class="scrollup" id="scroll-up" aria-label="Scroll to top">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+   
+</body>
+</html>
