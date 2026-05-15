@@ -124,9 +124,9 @@ That’s it – no installation, no dependencies.
 
 ## 👥 Contributors
 
-| ![Nishan Kharel](https://github.com/nishankhareln.png?size=50) | ![Asmita Moktan](https://github.com/Asmitalama.png?size=50) |
+| ![Nishan Kharel](https://github.com/nishankhareln.png?size=50) |
 |:---:|:---:|
-| **Nishan Kharel**<br>[nishankhareln](https://github.com/nishankhareln) | **Asmita Moktan**<br>[Asmitalama](https://github.com/Asmitalama) |
+| **Nishan Kharel**<br>[nishankhareln](https://github.com/nishankhareln) |
 
 > Thanks to both for building and refining this portfolio.
 
