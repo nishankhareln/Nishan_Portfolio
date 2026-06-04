@@ -1,34 +1,66 @@
 /* =============================================================
    Nishan Kharel Portfolio — main.js
-   Handles: nav, scroll state, animations, filters, contact form
+   Handles: theme, nav, scroll progress, reveal, typed, counters,
+            project modal, work filters, contact form
    Security: honeypot, rate limit, sanitization, reCAPTCHA v3
    ============================================================= */
 
 /* ---------- CONFIG ---------- */
 const CONFIG = {
-    // Backend API URL — change this to your deployed backend (e.g., https://api.nishankharel.com.np)
-    // If the backend is unreachable, the form falls back to EmailJS automatically.
-    API_URL: 'http://localhost:8000',
+    // Backend API URL. Leave EMPTY ('') to skip the backend entirely and
+    // send through EmailJS directly (no server needed). Set this to your
+    // deployed backend (e.g. 'https://api.nishankharel.com.np') if you run one.
+    API_URL: '',
     API_CONTACT_ENDPOINT: '/api/contact',
 
-    // EmailJS (fallback if backend is down) — keep existing keys
+    // EmailJS (primary path when there is no backend)
     EMAILJS_SERVICE_ID: 'service_s3k94bm',
     EMAILJS_TEMPLATE_ID: 'template_j9gmdko',
     EMAILJS_PUBLIC_KEY: 'rATtpyoFkfKtq_lrF',
 
-    // reCAPTCHA v3 Site Key — paste yours after registering at google.com/recaptcha/admin
-    // Leave empty string to disable reCAPTCHA
+    // reCAPTCHA v3 Site Key — leave empty string to disable
     RECAPTCHA_SITE_KEY: '',
 
     // Rate limit: minimum seconds between submissions (client-side)
     RATE_LIMIT_SECONDS: 30,
 };
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* =============== 0. THEME TOGGLE =============== */
+(() => {
+    const toggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const meta = document.querySelector('meta[name="theme-color"]');
+
+    const apply = (theme) => {
+        root.setAttribute('data-theme', theme);
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0c1424' : '#2f8ef0');
+        try { localStorage.setItem('nk-theme', theme); } catch (e) { /* ignore */ }
+    };
+
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            apply(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    // Follow the OS theme only while the user hasn't picked one explicitly.
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    media.addEventListener?.('change', (e) => {
+        let saved = null;
+        try { saved = localStorage.getItem('nk-theme'); } catch (err) { /* ignore */ }
+        if (!saved) root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    });
+})();
+
 /* =============== 1. MOBILE NAV =============== */
 (() => {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
     const navClose = document.getElementById('nav-close');
+    if (!navMenu) return;
 
     if (navToggle) {
         navToggle.addEventListener('click', () => navMenu.classList.add('show-menu'));
@@ -36,20 +68,25 @@ const CONFIG = {
     if (navClose) {
         navClose.addEventListener('click', () => navMenu.classList.remove('show-menu'));
     }
-
-    // Close menu when nav link clicked
     document.querySelectorAll('.nav__link').forEach(link => {
         link.addEventListener('click', () => navMenu.classList.remove('show-menu'));
     });
 })();
 
-/* =============== 2. HEADER SCROLL STATE =============== */
+/* =============== 2. HEADER SCROLL STATE + PROGRESS =============== */
 (() => {
     const header = document.getElementById('header');
-    if (!header) return;
+    const bar = document.getElementById('progress-bar');
 
     const onScroll = () => {
-        header.classList.toggle('is-scrolled', window.scrollY > 20);
+        const scrollY = window.scrollY;
+        if (header) header.classList.toggle('is-scrolled', scrollY > 20);
+
+        if (bar) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            bar.style.width = `${Math.min(pct, 100)}%`;
+        }
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -59,7 +96,7 @@ const CONFIG = {
 (() => {
     const sections = document.querySelectorAll('section[id]');
     const scrollActive = () => {
-        const scrollY = window.scrollY + 80;
+        const scrollY = window.scrollY + 90;
         sections.forEach(current => {
             const sectionTop = current.offsetTop;
             const sectionHeight = current.offsetHeight;
@@ -73,6 +110,7 @@ const CONFIG = {
             }
         });
     };
+    scrollActive();
     window.addEventListener('scroll', scrollActive, { passive: true });
 })();
 
@@ -86,17 +124,27 @@ const CONFIG = {
     window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-/* =============== 5. AOS (Animate On Scroll) =============== */
+/* =============== 5. REVEAL ON SCROLL (custom, no dependency) =============== */
 (() => {
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 700,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 80,
-            disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-        });
+    const els = Array.from(document.querySelectorAll('[data-aos]'));
+    if (!els.length) return;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('is-inview'));
+        return;
     }
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const delay = entry.target.getAttribute('data-aos-delay');
+            if (delay) entry.target.style.transitionDelay = `${delay}ms`;
+            entry.target.classList.add('is-inview');
+            io.unobserve(entry.target);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    els.forEach(el => io.observe(el));
 })();
 
 /* =============== 6. TYPED.JS ROLE =============== */
@@ -109,8 +157,9 @@ const CONFIG = {
         strings: [
             'AI Systems.',
             'RAG Pipelines.',
+            'Healthcare AI.',
             'ML Models.',
-            'Data Products.',
+            'Computer Vision.',
             'LLM Apps.',
         ],
         typeSpeed: 60,
@@ -134,8 +183,7 @@ const CONFIG = {
         const startTime = performance.now();
         const tick = (now) => {
             const progress = Math.min((now - startTime) / duration, 1);
-            // easeOutQuad
-            const eased = 1 - (1 - progress) * (1 - progress);
+            const eased = 1 - (1 - progress) * (1 - progress); // easeOutQuad
             el.textContent = Math.floor(eased * target);
             if (progress < 1) requestAnimationFrame(tick);
             else el.textContent = target;
@@ -155,7 +203,189 @@ const CONFIG = {
     counters.forEach(el => observer.observe(el));
 })();
 
-/* =============== 8. WORK FILTER =============== */
+/* =============== 8. PROJECT MODAL =============== */
+(() => {
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+
+    const mediaEl = modal.querySelector('.modal__media');
+    const tagsEl = document.getElementById('modal-tags');
+    const titleEl = document.getElementById('modal-title');
+    const summaryEl = document.getElementById('modal-summary');
+    const highlightsEl = document.getElementById('modal-highlights');
+    const linksEl = document.getElementById('modal-links');
+
+    /* Rich detail for each project (drawn from the résumé) */
+    const PROJECTS = {
+        'bank-note': {
+            image: './portfolio/work1.png',
+            title: 'Bank Note OCR — Nepali Currency Detection',
+            tags: ['Computer Vision', 'Deep Learning', 'OpenCV', 'Vector Similarity'],
+            summary: 'A real-time computer-vision pipeline that detects and classifies Nepali banknote denominations from a live camera or image input, built for production reliability.',
+            highlights: [
+                'Built a currency detection pipeline using computer vision and deep learning to classify denominations in real time.',
+                'Applied vector-similarity matching for robust recognition under varied lighting and image quality.',
+                'Improved recognition accuracy and operational reliability for real-world deployment.',
+            ],
+            links: [{ label: 'View on GitHub', href: 'https://github.com/nishankhareln', icon: 'ri-github-fill' }],
+        },
+        'recruit-nepal': {
+            image: './portfolio/work2.png',
+            images: ['./portfolio/work2.png', './portfolio/recruit-nepal-ats.png'],
+            title: 'Recruit Nepal — AI-Powered ATS',
+            tags: ['NLP', 'spaCy NER', 'Sentence Transformers', 'LLM'],
+            summary: 'An end-to-end Applicant Tracking System that parses CVs and matches candidates to job descriptions, then ranks them with LLM-based contextual scoring.',
+            highlights: [
+                'Built an end-to-end ATS pipeline with Tesseract OCR fallback and spaCy NER for structured JSON extraction.',
+                'Used Sentence Transformer embeddings with cosine similarity for Top-N candidate shortlisting.',
+                'Added LLM-based contextual ATS scoring and automated ranking, improving recruiter efficiency and engagement.',
+            ],
+            links: [
+                { label: 'Live Demo', href: 'https://jobdes.streamlit.app/', icon: 'ri-external-link-line' },
+                { label: 'View on GitHub', href: 'https://github.com/nishankhareln', icon: 'ri-github-fill' },
+            ],
+        },
+        'shishu-care': {
+            image: './portfolio/work3.png',
+            title: 'Shishu Care — Infant Cry Classifier',
+            tags: ['CNN-BiLSTM', 'Attention', 'Audio ML', 'TensorFlow'],
+            summary: 'A deep-learning system that classifies why an infant is crying — hunger, pain, burping, or sleep — from short audio clips with near real-time inference.',
+            highlights: [
+                'Designed a CNN–BiLSTM with attention to classify infant cries from mel spectrograms.',
+                'Performed full audio preprocessing: noise handling, waveform normalisation, and mel-spectrogram extraction from raw .wav files.',
+                'Tuned for near real-time inference suitable for on-device use.',
+            ],
+            links: [{ label: 'View on GitHub', href: 'https://github.com/nishankhareln', icon: 'ri-github-fill' }],
+        },
+        'rag-chatbot': {
+            image: './portfolio/work6.png',
+            title: 'RAG Chatbot with pgvector + Gemini',
+            tags: ['RAG', 'FastAPI', 'pgvector', 'Gemini', 'Docker'],
+            summary: 'A production-ready Retrieval-Augmented Generation chatbot that grounds LLM answers in your own documents using a PostgreSQL vector store.',
+            highlights: [
+                'Built with FastAPI + PostgreSQL (pgvector) + Gemini LLM API and Sentence Transformer embeddings.',
+                'Cosine-similarity nearest-neighbour retrieval over a vector store for grounded, accurate answers.',
+                'Containerised with Docker-Compose; interactive Streamlit frontend for querying.',
+            ],
+            links: [{ label: 'View on GitHub', href: 'https://github.com/nishankhareln/Chatbot-with-PGvector', icon: 'ri-github-fill' }],
+        },
+        'popup': {
+            image: './portfolio/work4.png',
+            title: 'PopUp — Vendor Conversational Chatbot',
+            tags: ['LangChain', 'OpenAI', 'Conversational AI', 'BERT'],
+            summary: 'A vendor-to-vendor conversational assistant handling multi-turn workflows, plus a BERT-based Nepali fake-news classifier built for the same product.',
+            highlights: [
+                'Developed a multi-document chatbot with LangChain + OpenAI API.',
+                'Dynamic conversational forms and session-state management for accurate multi-turn vendor workflows.',
+                'Built a BERT-based Nepali fake-news classifier for real-time, high-accuracy content verification.',
+            ],
+            links: [{ label: 'View on GitHub', href: 'https://github.com/nishankhareln', icon: 'ri-github-fill' }],
+        },
+        'protein': {
+            image: './portfolio/work5.png',
+            title: 'Protein Function Prediction (CAFA-6)',
+            tags: ['Deep Learning', 'Bioinformatics', 'Healthcare'],
+            summary: 'A deep-learning model for the CAFA-6 challenge that predicts Gene Ontology labels directly from amino-acid sequences.',
+            highlights: [
+                'Predicted Gene Ontology (GO) labels from amino-acid sequences using deep learning.',
+                'Bioinformatics preprocessing with custom sequence encoding.',
+                'Class-weighted training to handle highly imbalanced label distributions.',
+            ],
+            links: [{ label: 'View on GitHub', href: 'https://github.com/nishankhareln', icon: 'ri-github-fill' }],
+        },
+    };
+
+    let lastFocused = null;
+
+    const buildList = (parent, items, render) => {
+        parent.innerHTML = '';
+        items.forEach(item => parent.appendChild(render(item)));
+    };
+
+    const openModal = (id) => {
+        const data = PROJECTS[id];
+        if (!data) return;
+
+        // Media: one image, or a two-up gallery when `images` has several.
+        const imgs = (data.images && data.images.length) ? data.images : [data.image];
+        mediaEl.innerHTML = '';
+        mediaEl.classList.toggle('modal__media--multi', imgs.length > 1);
+        imgs.forEach(src => {
+            const im = document.createElement('img');
+            im.src = src;
+            im.alt = data.title;
+            im.loading = 'lazy';
+            mediaEl.appendChild(im);
+        });
+
+        titleEl.textContent = data.title;
+        summaryEl.textContent = data.summary;
+
+        buildList(tagsEl, data.tags, (t) => {
+            const span = document.createElement('span');
+            span.className = 'modal__tag';
+            span.textContent = t;
+            return span;
+        });
+
+        buildList(highlightsEl, data.highlights, (h) => {
+            const li = document.createElement('li');
+            li.textContent = h;
+            return li;
+        });
+
+        buildList(linksEl, data.links, (l) => {
+            const a = document.createElement('a');
+            a.className = 'button button--primary';
+            a.href = l.href;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.innerHTML = `${l.label} <i class="${l.icon}"></i>`;
+            return a;
+        });
+
+        lastFocused = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+        const closeBtn = modal.querySelector('.modal__close');
+        if (closeBtn) closeBtn.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    };
+
+    // Open from any project card; let real links inside the card work normally.
+    document.querySelectorAll('.work__card[data-project-id]').forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return; // external link clicked
+            openModal(card.dataset.projectId);
+        });
+        // Keyboard access
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(card.dataset.projectId);
+            }
+        });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach(el => {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+})();
+
+/* =============== 9. WORK FILTER =============== */
 (() => {
     const filters = document.querySelectorAll('.work__filter');
     const cards = document.querySelectorAll('.work__card');
@@ -173,20 +403,17 @@ const CONFIG = {
                 const show = filter === 'all' || categories.includes(filter);
                 card.classList.toggle('is-hidden', !show);
             });
-
-            // Refresh AOS after filter change
-            if (typeof AOS !== 'undefined') AOS.refreshHard();
         });
     });
 })();
 
-/* =============== 9. FOOTER YEAR =============== */
+/* =============== 10. FOOTER YEAR =============== */
 (() => {
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
 
-/* =============== 10. CONTACT FORM =============== */
+/* =============== 11. CONTACT FORM =============== */
 (() => {
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
@@ -195,7 +422,7 @@ const CONFIG = {
     const submitBtn = form.querySelector('.contact__submit');
     const honeypot = form.querySelector('input[name="website"]');
 
-    /* ---- Init EmailJS (fallback) ---- */
+    /* ---- Init EmailJS ---- */
     if (typeof emailjs !== 'undefined' && CONFIG.EMAILJS_PUBLIC_KEY) {
         try {
             emailjs.init({ publicKey: CONFIG.EMAILJS_PUBLIC_KEY });
@@ -218,17 +445,11 @@ const CONFIG = {
         if (label) label.textContent = loading ? 'Sending' : 'Send Message';
     };
 
-    // Basic email regex (intentionally simple — real validation happens server-side)
-    const isValidEmail = (email) =>
-        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
-    // Strip control chars and trim
     const sanitize = (str) => {
         if (typeof str !== 'string') return '';
-        return str
-            .replace(/[\x00-\x1F\x7F]/g, '') // control chars
-            .trim()
-            .slice(0, 2000);
+        return str.replace(/[\x00-\x1F\x7F]/g, '').trim().slice(0, 2000);
     };
 
     const showFieldError = (fieldId, message) => {
@@ -238,16 +459,13 @@ const CONFIG = {
         if (errorEl) errorEl.textContent = message || '';
     };
 
-    // Clear field error on user input
     ['contact-name', 'contact-email', 'contact-message'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener('input', () => showFieldError(id, ''));
     });
 
-    /* ---- Client-side validation ---- */
     const validate = (data) => {
         let ok = true;
-
         if (!data.name || data.name.length < 2) {
             showFieldError('contact-name', 'Please enter your name (min 2 characters)');
             ok = false;
@@ -264,18 +482,14 @@ const CONFIG = {
             showFieldError('contact-message', 'Message must be under 2000 characters');
             ok = false;
         }
-
         return ok;
     };
 
-    /* ---- Rate limiting (client-side) ---- */
     const checkRateLimit = () => {
         const lastSubmit = parseInt(localStorage.getItem('contact_last_submit') || '0', 10);
-        const now = Date.now();
-        const elapsed = (now - lastSubmit) / 1000;
+        const elapsed = (Date.now() - lastSubmit) / 1000;
         if (elapsed < CONFIG.RATE_LIMIT_SECONDS) {
-            const wait = Math.ceil(CONFIG.RATE_LIMIT_SECONDS - elapsed);
-            return { allowed: false, wait };
+            return { allowed: false, wait: Math.ceil(CONFIG.RATE_LIMIT_SECONDS - elapsed) };
         }
         return { allowed: true };
     };
@@ -284,18 +498,13 @@ const CONFIG = {
         localStorage.setItem('contact_last_submit', Date.now().toString());
     };
 
-    /* ---- reCAPTCHA v3 ---- */
     const getRecaptchaToken = async () => {
-        if (!CONFIG.RECAPTCHA_SITE_KEY || typeof grecaptcha === 'undefined') {
-            return '';
-        }
+        if (!CONFIG.RECAPTCHA_SITE_KEY || typeof grecaptcha === 'undefined') return '';
         try {
             return await new Promise((resolve, reject) => {
                 grecaptcha.ready(() => {
-                    grecaptcha
-                        .execute(CONFIG.RECAPTCHA_SITE_KEY, { action: 'contact' })
-                        .then(resolve)
-                        .catch(reject);
+                    grecaptcha.execute(CONFIG.RECAPTCHA_SITE_KEY, { action: 'contact' })
+                        .then(resolve).catch(reject);
                 });
             });
         } catch (err) {
@@ -304,28 +513,19 @@ const CONFIG = {
         }
     };
 
-    /* ---- Backend submission ---- */
     const submitToBackend = async (payload) => {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
-
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
         try {
-            const response = await fetch(
-                `${CONFIG.API_URL}${CONFIG.API_CONTACT_ENDPOINT}`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                    signal: controller.signal,
-                    mode: 'cors',
-                    credentials: 'omit',
-                }
-            );
+            const response = await fetch(`${CONFIG.API_URL}${CONFIG.API_CONTACT_ENDPOINT}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload),
+                signal: controller.signal,
+                mode: 'cors',
+                credentials: 'omit',
+            });
             clearTimeout(timeoutId);
-
             if (!response.ok) {
                 const errData = await response.json().catch(() => ({}));
                 throw new Error(errData.detail || `HTTP ${response.status}`);
@@ -337,36 +537,27 @@ const CONFIG = {
         }
     };
 
-    /* ---- EmailJS fallback ---- */
     const submitToEmailJS = async (payload) => {
-        if (typeof emailjs === 'undefined') {
-            throw new Error('EmailJS not loaded');
-        }
-        return emailjs.send(
-            CONFIG.EMAILJS_SERVICE_ID,
-            CONFIG.EMAILJS_TEMPLATE_ID,
-            {
-                user_name: payload.name,
-                user_email: payload.email,
-                user_subject: payload.subject,
-                user_message: payload.message,
-            }
-        );
+        if (typeof emailjs === 'undefined') throw new Error('EmailJS not loaded');
+        return emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ID, {
+            user_name: payload.name,
+            user_email: payload.email,
+            user_subject: payload.subject,
+            user_message: payload.message,
+        });
     };
 
-    /* ---- Form submit handler ---- */
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         setStatus('');
 
-        // Honeypot check: if filled, silently drop (don't tell the bot)
+        // Honeypot: if filled, pretend success (don't tip off the bot)
         if (honeypot && honeypot.value.trim() !== '') {
             setStatus('Message sent successfully.', 'success');
             form.reset();
             return;
         }
 
-        // Build payload
         const payload = {
             name: sanitize(form.user_name.value),
             email: sanitize(form.user_email.value).toLowerCase(),
@@ -375,13 +566,11 @@ const CONFIG = {
             recaptcha_token: '',
         };
 
-        // Validate
         if (!validate(payload)) {
             setStatus('Please fix the errors above.', 'error');
             return;
         }
 
-        // Rate limit
         const rateCheck = checkRateLimit();
         if (!rateCheck.allowed) {
             setStatus(`Please wait ${rateCheck.wait}s before sending another message.`, 'error');
@@ -389,40 +578,37 @@ const CONFIG = {
         }
 
         setLoading(true);
-        setStatus('Verifying…');
+        setStatus('Sending…');
 
-        // Get reCAPTCHA token if enabled
         try {
             payload.recaptcha_token = await getRecaptchaToken();
         } catch (err) {
             console.warn('reCAPTCHA token error:', err);
         }
 
-        setStatus('Sending…');
-
-        // Try backend first, fall back to EmailJS
-        try {
-            await submitToBackend(payload);
-            markSubmitted();
-            setStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
-            form.reset();
-        } catch (backendErr) {
-            console.warn('Backend unreachable, falling back to EmailJS:', backendErr.message);
-            try {
-                await submitToEmailJS(payload);
-                markSubmitted();
-                setStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
-                form.reset();
-            } catch (fallbackErr) {
-                console.error('Both backend and EmailJS failed:', fallbackErr);
-                setStatus(
-                    'Failed to send message. Please email me directly at nkharel57@gmail.com',
-                    'error'
-                );
+        // If a backend URL is configured, try it first; otherwise go straight to EmailJS.
+        const trySend = async () => {
+            if (CONFIG.API_URL) {
+                try {
+                    await submitToBackend(payload);
+                    return;
+                } catch (backendErr) {
+                    console.warn('Backend unreachable, falling back to EmailJS:', backendErr.message);
+                }
             }
+            await submitToEmailJS(payload);
+        };
+
+        try {
+            await trySend();
+            markSubmitted();
+            setStatus("Message sent successfully! I'll get back to you soon.", 'success');
+            form.reset();
+        } catch (err) {
+            console.error('Send failed:', err);
+            setStatus('Failed to send message. Please email me directly at nkharel57@gmail.com', 'error');
         } finally {
             setLoading(false);
-            // Clear success message after 8s
             setTimeout(() => {
                 if (status.classList.contains('is-success')) setStatus('');
             }, 8000);

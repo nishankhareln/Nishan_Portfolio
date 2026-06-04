@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: portfolio_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_env}
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"  # bind to loopback only
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-portfolio_user} -d ${POSTGRES_DB:-portfolio_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - portfolio_net
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Override DATABASE_URL so the API talks to the compose `db` service.
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-portfolio_user}:${POSTGRES_PASSWORD:-change_me_in_env}@db:5432/${POSTGRES_DB:-portfolio_db}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8000:8000"  # only expose to the host; put behind nginx in prod
+    networks:
+      - portfolio_net
+    # Drop Linux capabilities — the API needs none.
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+
+volumes:
+  postgres_data:
+
+networks:
+  portfolio_net:
+    driver: bridge
