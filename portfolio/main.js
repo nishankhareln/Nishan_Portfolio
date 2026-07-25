@@ -293,6 +293,21 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
             ],
             links: [{ label: 'View on GitHub', href: 'https://github.com/nishankhareln', icon: 'ri-github-fill' }],
         },
+        'ai-news-hub': {
+            image: './portfolio/ainews.png',
+            title: 'AI News Hub — Live AI Papers & News Agent',
+            tags: ['FastAPI', 'LangGraph', 'Gemini', 'Tavily', 'Render'],
+            summary: 'A live web app that gathers the newest AI research papers and news in one place, with an "Ask" agent that fetches real paper and news links on request.',
+            highlights: [
+                'FastAPI backend that pulls live from arXiv, Hugging Face, Hacker News, and RSS feeds, cached for speed.',
+                'An "Ask" agent built with LangGraph + Google Gemini and Tavily web search that returns real, clickable links.',
+                'Deployed live on Render from a GitHub repo, with a lightweight vanilla HTML/CSS/JS frontend.',
+            ],
+            links: [
+                { label: 'Live Demo', href: 'https://ai-news-hub-vxbr.onrender.com', icon: 'ri-external-link-line' },
+                { label: 'View on GitHub', href: 'https://github.com/nishankhareln/AI-News-Hub-one-place-for-the-latest-AI-research-news', icon: 'ri-github-fill' },
+            ],
+        },
     };
 
     let lastFocused = null;
