@@ -67,6 +67,7 @@
                     <li><a href="#home" class="nav__link active-link">Home</a></li>
                     <li><a href="#work" class="nav__link">Work</a></li>
                     <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="#research" class="nav__link">Research</a></li>
                     <li><a href="#experience" class="nav__link">Experience</a></li>
                     <li><a href="#skills" class="nav__link">Skills</a></li>
                     <li><a href="#services" class="nav__link">Services</a></li>
@@ -457,11 +458,236 @@
             </div>
         </section>
 
+        <!-- =============== RESEARCH =============== -->
+        <section class="research section" id="research">
+            <div class="container">
+                <div class="section__head" data-aos="fade-up">
+                    <span class="section__eyebrow">03 — Research</span>
+                    <h2 class="section__title-xl">RESEARCH &amp;<br>PUBLICATIONS.</h2>
+                    <p class="section__intro">
+                        My work is on trustworthy AI for medicine and science — models that stay reliable when
+                        the data stops looking like the training set, and that signal their own uncertainty
+                        instead of failing silently.
+                    </p>
+                </div>
+
+                <div class="research__intro">
+                    <div class="research__statement" data-aos="fade-up">
+                        <h3 class="research__statement-title">Research Interests</h3>
+                        <p>
+                            I work on trustworthy AI and foundation models: building systems that stay reliable,
+                            calibrated, and adaptable across data modalities — text, images, speech, code, scientific
+                            data, and narrow domain corpora. My current focus is medical imaging under distribution
+                            shift, biomedical language models, and honest evaluation: bootstrap confidence intervals,
+                            ablations, out-of-distribution detection, and reporting negative results as clearly as
+                            positive ones.
+                        </p>
+                        <div class="research__keywords">
+                            <span class="skills__tag">Model calibration</span>
+                            <span class="skills__tag">OOD detection</span>
+                            <span class="skills__tag">Distribution shift</span>
+                            <span class="skills__tag">Medical imaging</span>
+                            <span class="skills__tag">Biomedical NLP</span>
+                            <span class="skills__tag">Retrieval</span>
+                        </div>
+                    </div>
+
+                    <aside class="research__aside" data-aos="fade-left">
+                        <div class="research__aside-block">
+                            <span class="research__aside-label"><i class="ri-graduation-cap-line"></i> Education</span>
+                            <strong>B.Sc. Computer Science &amp; Information Technology</strong>
+                            <p>Texas International College, Tribhuvan University — Kathmandu, Nepal</p>
+                            <p class="research__aside-meta">Completed Feb 2026 · Aggregate 80.5%</p>
+                        </div>
+                        <div class="research__aside-block">
+                            <span class="research__aside-label"><i class="ri-award-line"></i> Grant</span>
+                            <strong>Mini Research Grant, 2026</strong>
+                            <p>
+                                Research, Learning &amp; Development Department, Texas International College —
+                                one of six proposals funded from an open institutional call after internal and
+                                external review. Awarded project: Cancer-LLM [P2].
+                            </p>
+                        </div>
+                    </aside>
+                </div>
+
+                <h3 class="research__subtitle" data-aos="fade-up">Publications &amp; Preprints</h3>
+                <ol class="pub__list">
+                    <li class="pub" data-aos="fade-up">
+                        <span class="pub__id">P1</span>
+                        <div class="pub__body">
+                            <h4 class="pub__title">
+                                Does It Know When It Is Wrong? Classification versus Retrieval for Trustworthy
+                                Skin-Lesion Screening on Degraded and Real-World Images
+                            </h4>
+                            <p class="pub__authors">Kharel, N., &amp; Simkhada, P. (2026)</p>
+                            <p class="pub__venue">Preprint · Zenodo · doi:10.5281/zenodo.21188527</p>
+                            <div class="pub__links">
+                                <a href="https://doi.org/10.5281/zenodo.21188527" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                    Read preprint <i class="ri-arrow-right-up-line"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="pub" data-aos="fade-up" data-aos-delay="100">
+                        <span class="pub__id">P2</span>
+                        <div class="pub__body">
+                            <h4 class="pub__title">
+                                Cancer-LLM: A PubMed Central–Derived Instruction Dataset and Fine-Tuned BioBERT
+                                Model for Multi-Class Cancer Type Classification
+                            </h4>
+                            <p class="pub__authors">Kharel, N., &amp; Guragain, A. (2026)</p>
+                            <p class="pub__venue">Preprint · Zenodo · doi:10.5281/zenodo.20935607</p>
+                            <div class="pub__links">
+                                <a href="https://doi.org/10.5281/zenodo.20935607" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                    Read preprint <i class="ri-arrow-right-up-line"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="pub pub--pending" data-aos="fade-up" data-aos-delay="200">
+                        <span class="pub__id">M1</span>
+                        <div class="pub__body">
+                            <h4 class="pub__title">
+                                A Database and Semantic Comparison System for Fire Safety Regulatory Guidance
+                            </h4>
+                            <p class="pub__authors">Kharel, N., &amp; Simkhada, P.</p>
+                            <p class="pub__venue">Manuscript in preparation, 2026–2027</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <h3 class="research__subtitle" data-aos="fade-up">Research Experience</h3>
+                <div class="research__grid">
+
+                    <article class="rcard" data-aos="fade-up">
+                        <div class="rcard__head">
+                            <span class="rcard__year">2026</span>
+                            <h4 class="rcard__title">Trustworthy Skin-Lesion Screening under Degradation and Modality Shift</h4>
+                            <span class="rcard__role">Independent research · first author · [P1]</span>
+                        </div>
+                        <ul class="rcard__list">
+                            <li>
+                                Compared a fine-tuned <strong>EfficientNet-B0</strong> classifier against a
+                                <strong>DINOv2</strong> embedding plus nearest-neighbour retrieval screener on
+                                HAM10000 (10,015 images, lesion-grouped splits), and built a degradation benchmark
+                                (blur, JPEG, low light, noise, rotation) on which the classifier's melanoma recall
+                                collapses towards zero while retrieval holds <strong>40–50%</strong> — a failure
+                                aggregate accuracy hides.
+                            </li>
+                            <li>
+                                Validated on <strong>PAD-UFES-20</strong> (2,106 real smartphone photographs) with no
+                                retraining: retrieval caught 40% of melanomas vs. 11%, and flagged the distribution
+                                shift far better (OOD AUROC <strong>0.94 vs. 0.72</strong>) — the classifier failed silently.
+                            </li>
+                            <li>
+                                Distance-based isotonic-calibrated confidence reached <strong>ECE 0.03</strong> under
+                                degradation (classifier: 0.08 → 0.14). Reported bootstrap 95% CIs, a majority-class
+                                baseline and ablations, stating non-significant results and one negative finding honestly.
+                            </li>
+                        </ul>
+                        <div class="rcard__links">
+                            <a href="https://doi.org/10.5281/zenodo.21188527" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                Preprint <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                Code <i class="ri-github-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="rcard" data-aos="fade-up" data-aos-delay="100">
+                        <div class="rcard__head">
+                            <span class="rcard__year">2026</span>
+                            <h4 class="rcard__title">Cancer-LLM — Biomedical Instruction Dataset and BioBERT Classifier</h4>
+                            <span class="rcard__role">First author · [P2]</span>
+                        </div>
+                        <ul class="rcard__list">
+                            <li>
+                                Built an open instruction dataset of <strong>~151,800 examples</strong> mined from
+                                PubMed Central across 9 cancer types and three clinical categories (drugs, symptoms,
+                                prevention).
+                            </li>
+                            <li>
+                                Fine-tuned <strong>BioBERT</strong> for multi-class cancer-type classification,
+                                reaching <strong>89.8% accuracy</strong>.
+                            </li>
+                            <li>
+                                Selected for the Texas International College mini-research programme, awarded a
+                                competitive institutional Mini Research Grant, and presented to external evaluators.
+                            </li>
+                        </ul>
+                        <div class="rcard__links">
+                            <a href="https://doi.org/10.5281/zenodo.20935607" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                Preprint <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                Code <i class="ri-github-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="rcard" data-aos="fade-up" data-aos-delay="200">
+                        <div class="rcard__head">
+                            <span class="rcard__year">2026 — Present</span>
+                            <h4 class="rcard__title">Semantic Comparison System for Fire Safety Regulatory Guidance</h4>
+                            <span class="rcard__role">Co-author · with an M.Sc. Data Science researcher, United Kingdom · [M1]</span>
+                        </div>
+                        <ul class="rcard__list">
+                            <li>
+                                Co-developing clause-level alignment over <strong>2,867 UK fire safety clauses</strong>
+                                using Sentence-BERT retrieval with calibrated similarity bands, plus a rule-based check
+                                that flags changed numeric limits and modal verbs inside otherwise "similar" pairs.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="rcard" data-aos="fade-up">
+                        <div class="rcard__head">
+                            <span class="rcard__year">2025 — 2026</span>
+                            <h4 class="rcard__title">Protein Function Prediction — CAFA-6 (Biomedical ML)</h4>
+                            <span class="rcard__role">Independent project</span>
+                        </div>
+                        <ul class="rcard__list">
+                            <li>
+                                Reframed Gene Ontology annotation as hierarchical multi-label prediction: wrote a GO
+                                parser with ancestor propagation over <strong>40,000+ terms</strong> and explored
+                                <strong>ESM-2</strong> protein-language-model embeddings with class-weighted
+                                per-ontology classifiers.
+                            </li>
+                        </ul>
+                        <div class="rcard__links">
+                            <a href="https://github.com/nishankhareln" target="_blank" rel="noopener noreferrer" class="pub__link">
+                                Code <i class="ri-github-line"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="rcard" data-aos="fade-up" data-aos-delay="100">
+                        <div class="rcard__head">
+                            <span class="rcard__year">2025</span>
+                            <h4 class="rcard__title">Shishu Care — Infant Cry Classification (Healthcare Audio)</h4>
+                            <span class="rcard__role">Team project</span>
+                        </div>
+                        <ul class="rcard__list">
+                            <li>
+                                Designed a <strong>CNN–BiLSTM with attention</strong> over mel spectrograms to classify
+                                infant cries (hunger, pain, burping, sleep) with near real-time inference.
+                            </li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
         <!-- =============== EXPERIENCE =============== -->
         <section class="experience section" id="experience">
             <div class="container">
                 <div class="section__head" data-aos="fade-up">
-                    <span class="section__eyebrow">03 — Professional Journey</span>
+                    <span class="section__eyebrow">04 — Professional Journey</span>
                     <h2 class="section__title-xl">EXPERIENCE.</h2>
                     <p class="section__intro">
                         A track record of shipping AI systems across recruitment, document intelligence,
@@ -475,12 +701,12 @@
                         <div class="timeline__content">
                             <div class="timeline__head">
                                 <span class="timeline__date">Feb 2026 — Present</span>
-                                <h3 class="timeline__role">Applied Scientist <span class="timeline__type">Current</span></h3>
-                                <span class="timeline__company">Samni Labs AI · USA (Remote)</span>
+                                <h3 class="timeline__role">Applied Scientist / Research &amp; Tech Lead <span class="timeline__type">Current</span></h3>
+                                <span class="timeline__company">Samni Labs · USA (Remote)</span>
                             </div>
                             <ul class="timeline__list">
-                                <li>Fine-tuning and training large models against <strong>Opus-style problem statements</strong> on real healthcare data.</li>
-                                <li>Building evaluation and data pipelines to turn domain-specific datasets into production-ready model improvements.</li>
+                                <li>Technical lead for <strong>HealthCare Suite</strong>, a live production care-plan automation system for Washington-state adult family homes: FastAPI + LangGraph on AWS (Bedrock, Transcribe Medical, S3, SQS/SNS) over PostgreSQL/RDS, extracting a <strong>~300-field clinical schema</strong> from PDFs and dictated audio with human-in-the-loop review.</li>
+                                <li>Hardened it for a healthcare buyer's security review: per-user <strong>TOTP MFA</strong> with encrypted secrets, least-privilege database roles, an immutable audit trail, automatic redaction of direct identifiers before any model call, and end-to-end HTTPS.</li>
                             </ul>
                         </div>
                     </li>
@@ -490,13 +716,12 @@
                         <div class="timeline__content">
                             <div class="timeline__head">
                                 <span class="timeline__date">Oct 2025 — Feb 2026</span>
-                                <h3 class="timeline__role">AI Engineer <span class="timeline__type">Part Time</span></h3>
+                                <h3 class="timeline__role">AI Engineer <span class="timeline__type">Internship</span></h3>
                                 <span class="timeline__company">Mantra Ideas Tech · Kathmandu, Nepal</span>
                             </div>
                             <ul class="timeline__list">
-                                <li>Engineered an AI-based <strong>Bank Note OCR System</strong> using computer vision and deep learning to detect and classify currency denominations.</li>
-                                <li>Fine-tuned <strong>Text-to-Speech models</strong> for Nepali voice synthesis with VibeVoice and Voice Cloning for real-time speech generation.</li>
-                                <li>Built NLP automation tools including intelligent document parsing and information extraction pipelines.</li>
+                                <li>Engineered a computer-vision <strong>banknote recognition system</strong> for denomination classification.</li>
+                                <li>Fine-tuned <strong>text-to-speech models</strong> for Nepali voice synthesis.</li>
                             </ul>
                         </div>
                     </li>
@@ -505,14 +730,13 @@
                         <div class="timeline__dot"></div>
                         <div class="timeline__content">
                             <div class="timeline__head">
-                                <span class="timeline__date">Mar 2025 — Aug 2025</span>
-                                <h3 class="timeline__role">Data Scientist</h3>
+                                <span class="timeline__date">Jan 2025 — Sep 2025</span>
+                                <h3 class="timeline__role">Data Scientist <span class="timeline__type">Internship → Full-time</span></h3>
                                 <span class="timeline__company">Mind Risers Technology · Kathmandu, Nepal</span>
                             </div>
                             <ul class="timeline__list">
-                                <li>Developed an <strong>AI-powered ATS system</strong> for Recruit Nepal using Tesseract OCR, spaCy NER, and semantic search to match candidate profiles with job descriptions.</li>
-                                <li>Built a <strong>Nepali fake news classifier</strong> for the Pop-Up app using BERT-based Transformer models, enabling real-time content verification.</li>
-                                <li>Created an automated <strong>Job Description Generator</strong> with secure API integration for dynamic job-posting creation.</li>
+                                <li>Built a deployed <strong>ATS / resume-matching system</strong> (Tesseract OCR, spaCy NER, Sentence-Transformer retrieval with an LLM scoring stage).</li>
+                                <li>Built a <strong>Nepali fake-news classifier</strong> using BERT-based transformers.</li>
                             </ul>
                         </div>
                     </li>
@@ -523,12 +747,11 @@
                             <div class="timeline__head">
                                 <span class="timeline__date">Feb 2025 — Feb 2026</span>
                                 <h3 class="timeline__role">Data Science Consultant <span class="timeline__type">Part-Time</span></h3>
-                                <span class="timeline__company">Namaste Network · Chabahil, Kathmandu</span>
+                                <span class="timeline__company">Namaste Network · Kathmandu, Nepal</span>
                             </div>
                             <ul class="timeline__list">
-                                <li>Designed and deployed end-to-end data science solutions covering predictive modelling, NLP pipelines, and automated analytics.</li>
-                                <li>Delivered training on <strong>Neural Networks and Transformer architectures</strong>, covering backpropagation and attention mechanisms.</li>
-                                <li>Designed data science bootcamp curriculum and materials, improving student satisfaction by <strong>25%</strong>.</li>
+                                <li>Taught <strong>neural networks and transformer architectures</strong> (backpropagation, attention).</li>
+                                <li>Designed the <strong>data-science bootcamp curriculum</strong> and teaching materials.</li>
                             </ul>
                         </div>
                     </li>
@@ -538,12 +761,12 @@
                         <div class="timeline__content">
                             <div class="timeline__head">
                                 <span class="timeline__date">2024</span>
-                                <h3 class="timeline__role">Machine Learning Tutor</h3>
+                                <h3 class="timeline__role">Machine Learning Tutor / Teaching Assistant</h3>
                                 <span class="timeline__company">Texas International College · Kathmandu, Nepal</span>
                             </div>
                             <ul class="timeline__list">
-                                <li>Conducted <strong>20+ lectures</strong> and mentoring sessions on AI and Machine Learning for undergraduate students.</li>
-                                <li>Facilitated hands-on ML workshops, achieving a <strong>90% student pass rate</strong>.</li>
+                                <li>Delivered <strong>20+ lectures</strong> on AI and machine learning.</li>
+                                <li>Mentored undergraduates through Python and capstone project work.</li>
                             </ul>
                         </div>
                     </li>
@@ -555,7 +778,7 @@
         <section class="skills section" id="skills">
             <div class="container">
                 <div class="section__head" data-aos="fade-up">
-                    <span class="section__eyebrow">04 — Technical Stack</span>
+                    <span class="section__eyebrow">05 — Technical Stack</span>
                     <h2 class="section__title-xl">SKILLS &amp;<br>TOOLSET.</h2>
                 </div>
 
@@ -663,7 +886,7 @@
         <section class="services section" id="services">
             <div class="container">
                 <div class="section__head" data-aos="fade-up">
-                    <span class="section__eyebrow">05 — What I Offer</span>
+                    <span class="section__eyebrow">06 — What I Offer</span>
                     <h2 class="section__title-xl">SERVICES.</h2>
                 </div>
 
@@ -715,7 +938,7 @@
         <section class="contact section" id="contact">
             <div class="container">
                 <div class="section__head" data-aos="fade-up">
-                    <span class="section__eyebrow">06 — Let's Connect</span>
+                    <span class="section__eyebrow">07 — Let's Connect</span>
                     <h2 class="section__title-xl">GET IN<br>TOUCH.</h2>
                     <p class="section__intro">
                         Have a project in mind or want to collaborate? Drop a message — I read every one.
@@ -827,6 +1050,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#work">Work</a></li>
+                    <li><a href="#research">Research</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
